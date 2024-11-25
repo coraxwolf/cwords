@@ -1,8 +1,8 @@
 # Variables
 CC = $(shell which gcc)
-CFLAGS = -Wall -Wextra -Werror -std=c11
+CFLAGS = -Wall -Wextra -Werror -std=c11 -I./includes
 TARGET = cwordle
-SRC = main.c words.c
+SRC = src/main.c src/words.c
 OBJ = $(SRC:.c=.o)
 
 # Define Phone Targets
