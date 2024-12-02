@@ -7,9 +7,9 @@
 int main()
 {
   printf("Hello, World!\n");
-  char *filename = "./data/words";
   WordList *list = createWordList();
-  readWordsFromFile(filename, list);
+  printf("Initalizing Word List with Data Words\n");
+  initWordList(list);
   printf("Word List Size: %d\n", list->size);
   printf("Getting 2 Random Words\n");
   Word *word1 = getRandomWord(list);

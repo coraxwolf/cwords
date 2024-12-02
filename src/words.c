@@ -5,11 +5,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "words.h"
+#include "word_data.h"
 
 /* Create New Word List */
 WordList *createWordList()
 {
+  /* Calling Seed Random In Create Word List to avoid reseeding the random generator too often */
+  srand(time(NULL)); /* Seed Random Number Generator */
   WordList *newList = (WordList *)malloc(sizeof(WordList));
   newList->head = NULL;
   newList->size = 0;
@@ -26,6 +30,36 @@ Word *createWord(char *word)
   newWord->word = word;
   newWord->length = strlen(word);
   return newWord;
+}
+
+/* Extract Words from Data Words */
+char *strndup(const char *s, size_t n)
+{
+  size_t len = strlen(s) < n ? strlen(s) : n;
+  char *new_str = malloc(len + 1);
+  if (new_str == NULL)
+  {
+    return NULL;
+  }
+  memcpy(new_str, s, len);
+  new_str[len] = '\0';
+  return new_str;
+}
+
+/* Initalize Word List with Built-In Word Data
+  @param list: WordList* - Word List to initalize
+*/
+void initWordList(WordList *list)
+{
+  char *data_copy = strndup((char *)data_words, data_words_len);
+  char *token = strtok(data_copy, "\n");
+  while (token != NULL)
+  {
+    Word *newWord = createWord(token);
+    addWord(list, newWord);
+    token = strtok(NULL, "\n");
+  }
+  free(data_copy);
 }
 
 /* Add Word to Word List

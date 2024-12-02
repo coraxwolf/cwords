@@ -34,6 +34,9 @@ typedef struct WordList
 /* Creates empty Word List */
 WordList *createWordList();
 
+/* Initalize Word List with built-in Word Data */
+void initWordList(WordList *list);
+
 /* Adds Word to List
   @param list: WordList* - Word List to add Word to
   @param word: Word* - Word to add to Word List
