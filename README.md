@@ -44,7 +44,45 @@ gcc -o cwordle cwordle.c
 
 3. Run Game
 ```
-./cwordle
+./bin/cwordle <level>
+```
+
+### Sample Output
+```
+./bin/cwordle 5
+Initalizing Word List with Data Words
+Word List Size: 7772
+Picking a Random Word with length of 5 characters
+Attempt: 1 of 7
+Enter Your Guess: books
+Results: 0 = Wrong, 2 = Correct, 4 = Included
+b: 0 o: 0 o: 0 k: 0 s: 2
+Attempt: 2 of 7
+Enter Your Guess: ahems
+Results: 0 = Wrong, 2 = Correct, 4 = Included
+a: 0 h: 0 e: 0 m: 0 s: 2
+Attempt: 3 of 7
+Enter Your Guess: allow
+Results: 0 = Wrong, 2 = Correct, 4 = Included
+a: 0 l: 0 l: 0 o: 0 w: 4
+Attempt: 4 of 7
+Enter Your Guess: wells
+Results: 0 = Wrong, 2 = Correct, 4 = Included
+w: 2 e: 0 l: 0 l: 0 s: 2
+Attempt: 5 of 7
+Enter Your Guess: wents
+Results: 0 = Wrong, 2 = Correct, 4 = Included
+w: 2 e: 0 n: 2 t: 0 s: 2
+Attempt: 6 of 7
+Enter Your Guess: winds
+Results: 0 = Wrong, 2 = Correct, 4 = Included
+w: 2 i: 2 n: 2 d: 0 s: 2
+Attempt: 7 of 7
+Enter Your Guess: wines
+Results: 0 = Wrong, 2 = Correct, 4 = Included
+w: 2 i: 2 n: 2 e: 0 s: 2
+You Failed to Guess the Word!
+The Word was: wings
 ```
 
 
