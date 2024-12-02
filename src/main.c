@@ -15,25 +15,65 @@ char *getUserGuess()
   return guess;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
-  printf("Hello, World!\n");
+  int level;
+  int word_length;
+  int attempts;
+  // check for arguments
+  if (argc != 1)
+  {
+    level = 1;
+  }
+  else if (argc == 2 && atoi(argv[1]) > 0 && atoi(argv[1]) < 6)
+  {
+    level = atoi(argv[1]);
+  }
+  else
+  {
+    printf("Usage: %s [level]\n*Levels go from 1 to 5\n", argv[0]);
+    return EXIT_FAILURE;
+  }
+  switch (level)
+  {
+  case 1:
+    attempts = 7;
+    word_length = 5;
+    break;
+  case 2:
+    attempts = 6;
+    word_length = 5;
+    break;
+  case 3:
+    attempts = 5;
+    word_length = 5;
+    break;
+  case 4:
+    attempts = 4;
+    word_length = 5;
+    break;
+  case 5:
+    attempts = 3;
+    word_length = 5;
+    break;
+  default:
+    attempts = 7;
+    word_length = 5;
+    break;
+  }
+
   WordList *list = createWordList();
   printf("Initalizing Word List with Data Words\n");
   initWordList(list);
   printf("Word List Size: %d\n", list->size);
-  printf("Picking a Random Word with length of 5 characters\n");
-  Word *randomWord = getRandomWord(list);
-  while (randomWord->length != 5)
-  {
-    randomWord = getRandomWord(list);
-  }
+  printf("Picking a Random Word with length of %d characters\n", word_length);
+  Word *randomWord = getRandomWordofLength(list, word_length);
   int attempt = 0;
   bool solved = false;
-  while (attempt < 7 && !solved)
+  while (attempt < attempts && !solved)
   {
     attempt++;
-    printf("Attempt: %d\n", attempt);
+    printf("Attempt: %d of %d\n", attempt, attempts);
     /* Get User Guess */
     char *guess = getUserGuess();
     /* Check Word */

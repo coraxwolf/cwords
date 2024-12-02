@@ -69,6 +69,13 @@ void readWordsFromFile(char *filename, WordList *list);
 */
 Word *getRandomWord(WordList *list);
 
+/* Get Random Word From Word List of Length n
+  @param list: WordList* - Word List to get random word from
+  @param n: int - Length of Word
+  @return: Word* - Random Word from Word List
+*/
+Word *getRandomWordofLength(WordList *list, int n);
+
 /* Check Guessed Word against Selected Word
   @param selected: Word* - Selected Word
   @param guess: char* - Guessed Word

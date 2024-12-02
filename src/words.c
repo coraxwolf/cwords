@@ -2,6 +2,7 @@
   Word Utilities Functions
 */
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -189,6 +190,36 @@ Word *getRandomWord(WordList *list)
     current = current->next; /* Move to Next Word */
   }
   return current->word; /* Return Random Word */
+}
+
+/* Get Random Word from List of Length n
+  @param list: WordList* - Word List to get random word from
+  @param n: int - Length of Word
+  @return: Word* - Random Word from Word List
+*/
+Word *getRandomWordofLength(WordList *list, int n)
+{
+  Word *randomWord = getRandomWord(list); /* Get Random Word */
+  bool found = false;                     /* Flag to check if word is found */
+  while (randomWord->length != n)
+  /* Loop until Word Length is n */
+  {
+    randomWord = getRandomWord(list); /* Get New Random Word */
+  }
+  found = randomWord->length == n; /* Check if Word Length is n */
+  if (!found)
+  /* Word Length is not n */
+  {
+    printf("Error: Unable to find word of length %d\n", n);
+    exit(1);
+  }
+  if (randomWord == NULL)
+  /* Random Word is NULL */
+  {
+    printf("Error: Random Word is NULL\n");
+    exit(1);
+  }
+  return randomWord; /* Return Random Word */
 }
 
 /* Check Guessed Word against Selected Word
