@@ -2,7 +2,7 @@
 CC = $(shell which gcc)
 CFLAGS = -Wall -Wextra -Werror -std=c11 -I./includes
 TARGET = cwordle
-SRC = src/main.c src/words.c
+SRC = src/main.c
 OBJ = $(SRC:.c=.o)
 
 # Define Phone Targets
