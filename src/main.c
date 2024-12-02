@@ -11,10 +11,14 @@ int main()
   printf("Initalizing Word List with Data Words\n");
   initWordList(list);
   printf("Word List Size: %d\n", list->size);
-  printf("Getting 2 Random Words\n");
-  Word *word1 = getRandomWord(list);
-  Word *word2 = getRandomWord(list);
-  printf("Word 1: %s\n", word1->word);
-  printf("Word 2: %s\n", word2->word);
+  printf("Picking a Random Word with length of 5 characters\n");
+  Word *randomWord = getRandomWord(list);
+  int t = 1;
+  while (randomWord->length != 5)
+  {
+    randomWord = getRandomWord(list);
+    t++;
+  }
+  printf("Finally Ended Up with Word: %s after %d Tries\n", randomWord->word, t);
   return EXIT_SUCCESS;
 }
