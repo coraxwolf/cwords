@@ -39,6 +39,8 @@
 *.x86_64
 *.hex
 cwordle
+cwordlew64.exe
+bin/
 
 # Debug files
 *.dSYM/
