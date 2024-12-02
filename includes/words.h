@@ -29,6 +29,14 @@ typedef struct WordList
   int size;
 } WordList;
 
+/* Return Types */
+typedef enum
+{
+  CharResultSuccess = 2,
+  CharResultIncluded = 4,
+  CharResultWrong = 0,
+} ResultSet;
+
 /* Word List Functions */
 
 /* Creates empty Word List */
@@ -60,3 +68,10 @@ void readWordsFromFile(char *filename, WordList *list);
   @return: Word* - Random Word from Word List
 */
 Word *getRandomWord(WordList *list);
+
+/* Check Guessed Word against Selected Word
+  @param selected: Word* - Selected Word
+  @param guess: char* - Guessed Word
+  @return ResultSet[] - Results of each Character in Guessed Word
+*/
+ResultSet *checkWord(Word *selected, char *guess);

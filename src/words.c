@@ -190,3 +190,47 @@ Word *getRandomWord(WordList *list)
   }
   return current->word; /* Return Random Word */
 }
+
+/* Check Guessed Word against Selected Word
+  @param selected: Word* - Selected Word
+  @param guess: char* - Guessed Word
+  @return ResultSet[] - Results of each Character in Guessed Word
+*/
+ResultSet *checkWord(Word *selected, char *guess)
+{
+  int len = strlen(guess);                                           /* Get Length of Guessed Word */
+  ResultSet *results = (ResultSet *)malloc(sizeof(ResultSet) * len); /* Create Results Array */
+  for (int i = 0; i < len; i++)
+  /* Loop through each character in the guessed word */
+  {
+    if (selected->word[i] == guess[i])
+    /* Character is in the correct position */
+    {
+      results[i] = CharResultSuccess; /* Set Result to Success */
+    }
+    else
+    {
+      int included = 0; /* Flag to check if character is included in the selected word */
+      for (int j = 0; j < selected->length; j++)
+      /* Loop through each character in the selected word */
+      {
+        if (selected->word[j] == guess[i])
+        /* Character is included in the selected word */
+        {
+          included = 1; /* Set Included Flag */
+          break;        /* Exit Loop */
+        }
+      }
+      if (included)
+      /* Character is included in the selected word */
+      {
+        results[i] = CharResultIncluded; /* Set Result to Included */
+      }
+      else
+      {
+        results[i] = CharResultWrong; /* Set Result to Wrong */
+      }
+    }
+  }
+  return results; /* Return Results */
+}
